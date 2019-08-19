@@ -1,6 +1,6 @@
 express = require('express');
 app = express();
-port = process.env.PORT
+port = process.env.PORT;
 
 app.use(express.static('public'));
 app.get("/", function(req, res){
@@ -11,11 +11,11 @@ app.get("/grid", function(req, res){
     res.render("gridpage.ejs");
 });
 
-// app.listen(process.env.PORT, function(){
-//     console.log("server ahas started succesfully!");
-// });
+app.listen(5000, function(){
+    console.log("server ahas started succesfully!");
+});
 
-if (port == null || port == "") {
-    port = 8000;
-  }
-  app.listen(port);
+// if (port == null || port == "") {
+//     port = 8000;
+//   }
+//   app.listen(port);
