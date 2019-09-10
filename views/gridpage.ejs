@@ -1,8 +1,5 @@
 <% include header.ejs %>
-<!--the backgrounf image -->
-<!--<img src="https://images.unsplash.com/photo-1529088512498-64b87b354b8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" class="landing"> -->
 
-<!--here comes the jumbotron-->
 
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
@@ -12,84 +9,19 @@
 </div>
 
 <div class="container row">
-        <div class="col-md-3 col-sm-6">
-                <div class="card" >
-                   <img src="https://images.unsplash.com/photo-1524648829700-99c448a9e88d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" class="card-img-top" alt="...">
-                   <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                   </div>
+    <% data.forEach(function(cards) {  %>
+     <div class="col-md-3 col-sm-6">
+          <div class="card" >
+               <img src="<%= cards.image %>" class="card-img-top" alt="...">
+               <div class="card-body">
+               <a class="btn btn-primary" href="posts/<%= cards._id %>">more</a>
+               <div class="mb-1 text-muted"><%= cards.date.toDateString() %>, <%= cards.author.city %></div>
                </div>
-           </div>
-           <div class="col-md-3 col-sm-6">
-                <div class="card" >
-                   <img src="https://images.unsplash.com/photo-1524648829700-99c448a9e88d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" class="card-img-top" alt="...">
-                   <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                   </div>
-               </div>
-           </div>
-           <div class="col-md-3 col-sm-6">
-                <div class="card" >
-                   <img src="https://images.unsplash.com/photo-1524648829700-99c448a9e88d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" class="card-img-top" alt="...">
-                   <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                   </div>
-               </div>
-           </div>
-           <div class="col-md-3 col-sm-6">
-                <div class="card" >
-                   <img src="https://images.unsplash.com/photo-1524648829700-99c448a9e88d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" class="card-img-top" alt="...">
-                   <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                   </div>
-               </div>
-           </div>
-<!--heeeeeeeeeeeeeeeeeeeeeeeeeeere-->
-<div class="col-md-3 col-sm-6">
-        <div class="card" >
-           <img src="https://images.unsplash.com/photo-1524648829700-99c448a9e88d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" class="card-img-top" alt="...">
-           <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-           </div>
-       </div>
-   </div>
-   <div class="col-md-3 col-sm-6">
-        <div class="card" >
-           <img src="https://images.unsplash.com/photo-1524648829700-99c448a9e88d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" class="card-img-top" alt="...">
-           <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-           </div>
-       </div>
-   </div>
-   <div class="col-md-3 col-sm-6">
-        <div class="card" >
-           <img src="https://images.unsplash.com/photo-1524648829700-99c448a9e88d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" class="card-img-top" alt="...">
-           <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-           </div>
-       </div>
-   </div>
-   <div class="col-md-3 col-sm-6">
-        <div class="card" >
-           <img src="https://images.unsplash.com/photo-1524648829700-99c448a9e88d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" class="card-img-top" alt="...">
-           <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-           </div>
-       </div>
-   </div>
+          </div>
+     </div>
+    <% }); %>
+         
 </div>
 <br>
 <br>
-<footer class="footer container">
-        <div class="content has-text-centered container">
-          <p>
-            <strong>Negafa</strong> you can <a href="https://taks-app.herokuapp.com">view weather</a> of your city.
-            
-            is licensed by adilbim.
-          </p>
-        </div>
-</footer>
-
-
-</body>
-</html>
+<% include footer.ejs %>

@@ -3,12 +3,15 @@
     <head>
         <title>neguafa</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="/index.css">
     </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-expand-sm navbar-light bg-light flex-column flex-md-row bd-navbar">
+<nav class="navbar navbar-light bg-light sticky-top">
     <ul class="nav">
         <li class="nav-item">
             <a class="navbar-brand" href="/">
@@ -17,4 +20,23 @@
         </li>
     </ul>
    <!--here comes the login link-->
+   <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <% if (!currentUser){ %>
+             Options
+         <% } else { %>
+            <img src="https://image.flaticon.com/icons/svg/74/74472.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+          <% } %>
+           
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <% if(currentUser){ %>
+            <button class="dropdown-item" type="button"><a href="/profile/<%= currentUser._id %>"><%= currentUser.username %></a></button>
+            <button class="dropdown-item" type="button"><a href="/logout">Logout</a></button>
+            <% } else { %>
+            <button class="dropdown-item" type="button"><a href="/register">Signin</a></button>
+            <button class="dropdown-item" type="button"><a href="/login">Login</a></button>
+            <% } %>
+        </div>
+    </div>
 </nav> 

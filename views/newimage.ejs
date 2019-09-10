@@ -1,0 +1,121 @@
+<% include header.ejs %>
+
+
+
+<div class="container">
+    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+        <div class="container">
+            <div class="col-md-6 px-0">
+                <table>
+                    <tr class="row">
+                        <td class="col-sm">
+                            <img src="https://images.unsplash.com/photo-1485290334039-a3c69043e517?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=60" alt="..." class="img-thumbnail profile">
+                        </td>
+                        <td class="col-sm">
+                            <h1 class="font-italic"><%= user.username %></h1>
+                        </td>
+                    </tr>
+                </table>
+               
+                <p class="lead my-3">
+                    <p><%= user.description %></p>
+                    <p><%= user.email %> - <%= user.phonenumber %></p>
+                    <p>adress: <%= user.adress %>, <%= user.city %></p>
+                </p>
+                <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<%  if(currentUser){ %>
+    <%  if(String(user._id) == String(currentUser._id)){ %>
+
+<div class="container">
+    <form action="/posts/<%= user._id %>" method="POST">
+        <div class="row">
+          <div class="col">
+            <input type="text" name="imglink" class="form-control" placeholder="new post">
+          </div>
+          <div class="col">
+            <input type="text" name="description" class="form-control" placeholder="description">
+          </div>
+          <div class="col">
+              <input type="submit" class="btn btn-success bt">
+          </div> 
+        </div>
+    </form>
+</div>  
+<% }} %>
+<br>
+<!-- ////////////////////////////////////////////////////////////////////// -->
+<!-- <div class="container">
+<div id='map' style='width: 400px; height: 300px;'></div>
+</div> -->
+
+<!-- /////////////////////////////////////////////////////// -->
+<div class="container">
+<div class="row mb-2">
+<% user.posts.forEach(function(post){ %>
+
+    <div class="col-md-6">
+          <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-primary">Post</strong>
+              <h3 class="mb-0"><%= user.username %></h3>
+              <div class="mb-1 text-muted"><%= post.date.toDateString() %></div>
+              <p class="card-text mb-auto"><%= post.description %></p>
+              <a href="/posts/<%= post._id %>" class="stretched-link">more</a>
+            </div>
+            <div class="col-auto d-lg-block">
+              <img src="<%= post.image %>"  class="card-img-top">
+            </div>
+          </div>
+    </div>
+<% }); %>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <br>
+<br>
+<h1 class="container text-center">Add A New Image</h1>
+<form class="container text-center" action="/posts" method="POST">
+    <div class="form-group container">
+        <label for="formGroupExampleInput">Image Link</label>
+        <input type="text" name="imglink" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+    </div>
+    <div class="form-group container">
+        <label for="formGroupExampleInput2">Description</label>
+        <input type="text" name="description" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-secondary btn-lg btn-block butt-newimg">Block level button</button>
+    </div>
+</form>
+</body>
+</html> -->
+
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYWRpbGJpbSIsImEiOiJjazA5ZHgwdnUwNzgyM21wZWg4bnViZ3RpIn0.zcZiOL-NfIXbS-VLef_f-w';
+    var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9'
+    });
+    </script>
+<% include footer.ejs %>

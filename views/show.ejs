@@ -1,0 +1,79 @@
+<% include header.ejs %>
+<br>
+<div class="container">
+<div class="row">
+
+    <div class="col-md">
+        <div class="thumbnail">
+
+            <img src="<%= backdata.image %>" class="img-fluid img-thumbnail" alt="Responsive image">
+            <div class="card-body" style="background: #e0f0e0 ">
+                <%= backdata.description %>
+            </div>
+                
+        </div> 
+        <ul class="list-group list-group-flush">
+          <%  if(currentUser){ %>
+              <%  if(String(backdata.author._id) == String(currentUser._id)){ %>
+            <li class="list-group-item editdelete">
+                <form action="/posts/<%= backdata._id %>/edit" method="GET">
+                   <button class="btn btn-xs btn-warning">Edit</button>
+                </form>
+                <form action="/posts/<%= backdata._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-xs btn-danger">Delete</button>
+                </form>
+            </li> 
+         <%  }} %>
+            <li id="comments" class="list-group-item list-group-item-primary"><strong>Comments</strong></li>
+            <li class="list-group-item">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <form class="form-inline" action="/comments/<%= backdata._id %>" method="POST">
+                            <input type="text" name="comment[author]" class="form-control" placeholder="Author">
+                            <input type="text" name="comment[content]" class="form-control" placeholder="Comment">
+                            <button type="submit" class="btn btn-outline-primary">Post</button>
+                        </form>    
+                    </div>
+                </div>
+            </li>
+            <div class="scroll">
+           <% backdata.comments.forEach(function(comment){ %>
+           
+                <li class="list-group-item" id="list-item-4">
+                    <%  if(currentUser){ %>
+                        <%  if(String(backdata.author._id) == String(currentUser._id)){ %>
+                    <span id="delete">
+                        <form action="/posts/<%= backdata._id %>/comment/<%= comment._id %>?_method=DELETE" method="POST">
+                            <button type="submit"><img id="icon" src="https://www.flaticon.com/premium-icon/icons/svg/484/484560.svg"></button>
+                        </form>
+                    </span>
+                    <% }} %>
+                    <strong><%= comment.author %></strong> - <%= comment.content %>
+                </li>
+        
+           <% }) %>
+            </div>     
+        </ul>
+    </div>
+    <div class="col-md">
+        <table>
+            <tr>
+                <td>
+                    <img src="https://images.unsplash.com/photo-1485290334039-a3c69043e517?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="..." class="img-thumbnail profile">
+                </td> 
+                <td><%= backdata.author.username %></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p><%= backdata.author.description %></p>
+                    <p><%= backdata.author.adress %></p>
+                    <p><%= backdata.author.city %></p>
+                    <a href="/profile/<%= backdata.author._id %>">view profile for more info</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>
+
+<% include footer.ejs %>

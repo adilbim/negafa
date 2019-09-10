@@ -40,3 +40,55 @@ body{
 .row{
     margin: auto !important;
 }
+.butt-newimg{
+ margin: auto !important;
+}
+.btn-primary{
+    margin: 0 auto;
+}
+
+.profile{
+    width: 8em;
+}
+td{
+    padding-left: 20px;
+    font-size: x-large;
+    font-family: monospace;
+}
+
+.scroll{
+    width: 100%;
+    height: 110px;
+    overflow: auto;
+}
+
+.to-right{
+    margin-left: auto;
+}
+.bt{
+    width: -webkit-fill-available;
+}
+
+.card-body{
+    display: inline-block;
+}
+
+.editdelete{
+    display: flex;
+}
+#icon{
+    width: 30px;
+}
+#delete{
+    height: 40px;
+    margin-right: 20px;
+    text-align: center;
+    display: inline-block;
+    background: red;
+    display: none;
+    padding-top: 5px;
+    transition: 10.5s linear !important;
+}
+li:hover #delete {
+    display: inline-block;
+}
