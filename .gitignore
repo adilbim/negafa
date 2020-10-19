@@ -1,3 +1,6 @@
 node_modules/
 
 Procfile
+id_rsa1
+id_rsa1.pub
+local_info
