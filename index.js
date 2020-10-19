@@ -15,7 +15,7 @@ app.use(methodoverride('_method'));
 
 
 //connect to the database
-mongoose.connect('mongodb+srv://adilbim:hackeddetected@cluster0-1m98q.gcp.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true});
+mongoose.connect('your database url', {useNewUrlParser: true});
 //////////////////////////////////////////////////////////////
 var userSchema = new mongoose.Schema({
    username: String,  password: String,
